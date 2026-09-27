@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Dashboard | AI Study Assistant</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- ================= HEADER ================= -->
+
+    <header class="header">
+
+        <div class="logo">
+
+            <div class="logo-icon">
+                AI
+            </div>
+
+            <div>
+                <h2>AI Study Assistant</h2>
+                <span>Smart Learning Platform</span>
+            </div>
+
+        </div>
+
+
+        <nav class="navbar">
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="subjects.html">
+                Subjects
+            </a>
+
+            <a href="ai-assistant.html">
+                AI Assistant
+            </a>
+
+            <a href="quizzes.html">
+                Quizzes
+            </a>
+
+            <a href="dashboard.html">
+                Dashboard
+            </a>
+<a href="#" onclick="logoutStudent()">Logout</a>
+        </nav>
+
+
+        <a href="ai-assistant.html" class="nav-button">
+            Ask AI
+        </a>
+
+    </header>
+
+
+    <!-- ================= DASHBOARD HERO ================= -->
+
+    <section class="dashboard-hero">
+
+        <div>
+
+            <span>✦ STUDENT DASHBOARD</span>
+
+            <h1>
+                Welcome Back,
+                <strong id="studentName">Learner!</strong>
+            </h1>
+
+            <p>
+                Track your learning progress, review your quiz
+                performance and continue your studies.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= DASHBOARD ================= -->
+
+    <main class="dashboard-section">
+
+        <div class="dashboard-container">
+
+
+            <!-- ================= STAT CARDS ================= -->
+
+            <div class="dashboard-stats">
+
+                <div class="dashboard-stat-card">
+
+                    <div class="stat-icon">
+                        📚
+                    </div>
+
+                    <div>
+                        <span>SUBJECTS</span>
+
+                        <h2>8</h2>
+
+                        <p>Available subjects</p>
+                    </div>
+
+                </div>
+
+
+                <div class="dashboard-stat-card">
+
+                    <div class="stat-icon">
+                        📝
+                    </div>
+
+                    <div>
+                        <span>QUIZZES</span>
+
+                        <h2 id="totalQuizzes">0</h2>
+
+                        <p>Quizzes attempted</p>
+                    </div>
+
+                </div>
+
+
+                <div class="dashboard-stat-card">
+
+                    <div class="stat-icon">
+                        🎯
+                    </div>
+
+                    <div>
+                        <span>AVERAGE SCORE</span>
+
+                        <h2 id="averageScore">0%</h2>
+
+                        <p>Overall performance</p>
+                    </div>
+
+                </div>
+
+
+                <div class="dashboard-stat-card">
+
+                    <div class="stat-icon">
+                        🔥
+                    </div>
+
+                    <div>
+                        <span>STUDY STREAK</span>
+
+                       <h2 id="studyStreak">0</h2>
+
+                        <p>Days in a row</p>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================= MAIN DASHBOARD GRID ================= -->
+
+            <div class="dashboard-grid">
+
+
+                <!-- ================= SUBJECT PROGRESS ================= -->
+
+                <div class="dashboard-card progress-card">
+
+                    <div class="dashboard-card-header">
+
+                        <div>
+
+                            <span>LEARNING PROGRESS</span>
+
+                            <h2>Subject Progress</h2>
+
+                        </div>
+
+                        <a href="subjects.html">
+                            View Subjects →
+                        </a>
+
+                    </div>
+
+
+                    <!-- DYNAMIC SUBJECT PROGRESS -->
+
+                    <div
+                        class="subject-progress"
+                        id="subjectProgress">
+
+                        <p>
+                            Loading subject progress...
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ================= PERFORMANCE ================= -->
+
+                <div class="dashboard-card performance-card">
+
+                    <div class="dashboard-card-header">
+
+                        <div>
+
+                            <span>QUIZ PERFORMANCE</span>
+
+                            <h2>Your Performance</h2>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="performance-circle">
+
+                        <div>
+
+                            <strong id="performanceScore">
+                                0%
+                            </strong>
+
+                            <span>
+                                Average
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="performance-details">
+
+                        <div>
+
+                            <strong id="attemptedQuizzes">
+                                0
+                            </strong>
+
+                            <span>
+                                Attempted
+                            </span>
+
+                        </div>
+
+
+                        <div>
+
+                            <strong id="passedQuizzes">
+    0
+</strong>
+
+<span>
+    Passed
+</span>
+
+                        </div>
+
+
+                        <div>
+
+                            <strong id="bestScore">
+                                0%
+                            </strong>
+
+                            <span>
+                                Best Score
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <a
+                        href="quizzes.html"
+                        class="primary-button performance-button">
+
+                        Take a Quiz →
+
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================= SECOND GRID ================= -->
+
+            <div class="dashboard-grid second-grid">
+
+
+                <!-- ================= RECENT ACTIVITY ================= -->
+
+                <div class="dashboard-card">
+
+                    <div class="dashboard-card-header">
+
+                        <div>
+
+                            <span>RECENT ACTIVITY</span>
+
+                            <h2>Learning Activity</h2>
+
+                        </div>
+
+                    </div>
+
+<div class="activity-list" id="activityList">
+
+    <p>
+        Loading recent activity...
+    </p>
+
+</div>
+
+                </div>
+
+
+                <!-- ================= ACHIEVEMENTS ================= -->
+
+                <div class="dashboard-card">
+
+                    <div class="dashboard-card-header">
+
+                        <div>
+
+                            <span>ACHIEVEMENTS</span>
+
+                            <h2>Your Milestones</h2>
+
+                        </div>
+
+                    </div>
+
+
+                   <div class="achievement-list" id="achievementsList">
+
+    <p>
+        Loading achievements...
+    </p>
+
+</div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================= QUICK ACTIONS ================= -->
+
+            <div class="quick-actions">
+
+                <div>
+
+                    <span>
+                        CONTINUE LEARNING
+                    </span>
+
+                    <h2>
+                        What would you like to do?
+                    </h2>
+
+                </div>
+
+
+                <div class="action-buttons">
+
+                    <a
+                        href="ai-assistant.html"
+                        class="primary-button">
+
+                        🤖 Ask AI
+
+                    </a>
+
+
+                    <a
+                        href="quizzes.html"
+                        class="secondary-button">
+
+                        📝 Take Quiz
+
+                    </a>
+
+
+                    <a
+                        href="subjects.html"
+                        class="secondary-button">
+
+                        📚 Explore Subjects
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer class="footer">
+
+        <div class="footer-container">
+
+
+            <div class="footer-brand">
+
+                <div class="logo">
+
+                    <div class="logo-icon">
+                        AI
+                    </div>
+
+                    <div>
+
+                        <h2>
+                            AI Study Assistant
+                        </h2>
+
+                        <span>
+                            Smart Learning Platform
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <p>
+                    An AI-powered learning platform designed
+                    to help students study smarter and learn faster.
+                </p>
+
+            </div>
+
+
+            <div class="footer-column">
+
+                <h3>
+                    Quick Links
+                </h3>
+
+                <a href="index.html">
+                    Home
+                </a>
+
+                <a href="subjects.html">
+                    Subjects
+                </a>
+
+                <a href="ai-assistant.html">
+                    AI Assistant
+                </a>
+
+            </div>
+
+
+            <div class="footer-column">
+
+                <h3>
+                    Learning
+                </h3>
+
+                <a href="quizzes.html">
+                    Quizzes
+                </a>
+
+                <a href="dashboard.html">
+                    Dashboard
+                </a>
+
+                <a href="subjects.html">
+                    Study Materials
+                </a>
+
+            </div>
+
+
+            <div class="footer-column">
+
+                <h3>
+                    Platform
+                </h3>
+
+                <a href="ai-assistant.html">
+                    Ask AI
+                </a>
+
+                <a href="quizzes.html">
+                    Practice
+                </a>
+
+                <a href="dashboard.html">
+                    Progress
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            <p>
+                © 2026 AI Study Assistant. All rights reserved.
+            </p>
+
+            <p>
+                Built for smarter learning.
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

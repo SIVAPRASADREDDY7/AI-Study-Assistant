@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AI Assistant | AI Study Assistant</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- ================= HEADER ================= -->
+    <header class="header">
+
+        <div class="logo">
+            <div class="logo-icon">AI</div>
+
+            <div>
+                <h2>AI Study Assistant</h2>
+                <span>Smart Learning Platform</span>
+            </div>
+        </div>
+
+        <nav class="navbar">
+            <a href="index.html">Home</a>
+            <a href="subjects.html">Subjects</a>
+            <a href="ai-assistant.html">AI Assistant</a>
+            <a href="quizzes.html">Quizzes</a>
+            <a href="dashboard.html">Dashboard</a>
+            <a href="login.html">Login</a>
+        </nav>
+
+        <a href="ai-assistant.html" class="nav-button">
+            Ask AI
+        </a>
+
+    </header>
+
+
+    <!-- ================= PAGE HERO ================= -->
+    <section class="assistant-hero">
+
+        <div>
+            <span>✦ AI POWERED LEARNING</span>
+
+            <h1>
+                Your Personal
+                <strong>AI Study Assistant</strong>
+            </h1>
+
+            <p>
+                Ask questions, understand difficult concepts,
+                get simple explanations and prepare smarter for exams.
+            </p>
+        </div>
+
+    </section>
+
+
+    <!-- ================= AI ASSISTANT ================= -->
+    <section class="assistant-section">
+
+        <div class="assistant-container">
+
+            <!-- CHAT AREA -->
+            <div class="chat-box">
+
+                <!-- Chat Header -->
+                <div class="chat-header">
+
+                    <div class="ai-profile">
+                        <div class="ai-avatar">AI</div>
+
+                        <div>
+                            <h3>AI Study Assistant</h3>
+                            <span>
+                                <i></i> Online
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="chat-status">
+                        ● Ready
+                    </div>
+
+                </div>
+
+
+               
+<button class="clear-chat-btn" onclick="clearChat()">
+    Clear Chat
+</button>
+<div class="saved-answers-section">
+
+    <h3>⭐ Saved Answers</h3>
+
+    <div id="savedAnswerBox">
+        No saved answer yet.
+    </div>
+
+</div>
+<div class="question-history-section">
+
+    <h3>🕘 Question History</h3>
+
+    <div id="questionHistoryBox">
+        No questions asked yet.
+    </div>
+
+</div>
+<div id="loadingIndicator" class="loading-indicator">
+    ⏳ AI is thinking...
+</div>
+   <!-- Chat Messages -->
+<div class="chat-messages">
+
+    <div class="message ai-message">
+
+        <div class="message-avatar">
+            AI
+        </div>
+
+        <div class="message-content">
+
+            <span class="message-name">
+                AI Assistant
+            </span>
+
+            <p>
+                Hello! 👋 I'm your AI Study Assistant.
+                Ask me anything about your subjects,
+                programming, exams or assignments.
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+                <!-- Suggested Questions -->
+                <div class="suggested-section">
+
+                    <span>Quick questions</span>
+
+                    <div class="question-chips">
+
+                        <button onclick="useQuestion('Explain AI in simple words')">
+                            Explain AI
+                        </button>
+
+                        <button onclick="useQuestion('What is Machine Learning?')">
+                            What is Machine Learning?
+                        </button>
+
+                        <button onclick="useQuestion('Explain OSI Model')">
+                            Explain OSI Model
+                        </button>
+
+                        <button onclick="useQuestion('What is a quantum computer?')">
+                            Quantum Computing
+                        </button>
+
+                    </div>
+
+                </div>
+
+<div class="study-options">
+
+    <label for="subjectSelect">
+        📚 Subject
+    </label>
+
+    <select id="subjectSelect">
+        <option value="General">General</option>
+        <option value="Artificial Intelligence">Artificial Intelligence</option>
+        <option value="Data Structures">Data Structures</option>
+        <option value="DBMS">DBMS</option>
+        <option value="Operating Systems">Operating Systems</option>
+        <option value="Computer Networks">Computer Networks</option>
+        <option value="Software Engineering">Software Engineering</option>
+        <option value="Theory of Computation">Theory of Computation</option>
+        <option value="Quantum Computing">Quantum Computing</option>
+    </select>
+
+</div>
+<div class="study-options">
+
+    <label for="answerTypeSelect">
+        📝 Answer Type
+    </label>
+
+    <select id="answerTypeSelect">
+        <option value="2 Marks">2 Marks</option>
+        <option value="5 Marks">5 Marks</option>
+        <option value="10 Marks" selected>10 Marks</option>
+        <option value="Detailed Answer">Detailed Answer</option>
+    </select>
+
+</div>
+<div class="study-options">
+
+    <label for="voiceLanguageSelect">
+        🔊 Voice Language
+    </label>
+
+    <select id="voiceLanguageSelect">
+        <option value="en-US">English</option>
+        
+    </select>
+
+</div>
+                <!-- Chat Input -->
+                <div class="chat-input-area">
+
+                    <input
+                        type="text"
+                        id="userQuestion"
+                        placeholder="Ask your study question..."
+                        onkeypress="handleEnter(event)"
+                    >
+
+                    <button onclick="sendQuestion()">
+                        ➤
+                    </button>
+
+                </div>
+
+                <div class="input-note">
+                    AI Study Assistant can help explain concepts,
+                    generate examples and support exam preparation.
+                </div>
+
+            </div>
+
+
+            <!-- RIGHT SIDE PANEL -->
+            <aside class="study-sidebar">
+
+                <div class="sidebar-card">
+
+                    <div class="sidebar-icon">
+                        💡
+                    </div>
+
+                    <h3>Study Smarter</h3>
+
+                    <p>
+                        Ask specific questions to get clearer and
+                        more useful explanations.
+                    </p>
+
+                </div>
+
+
+                <div class="sidebar-card">
+
+                    <h3>What can I ask?</h3>
+
+                    <ul>
+                        <li>📚 Explain difficult topics</li>
+                        <li>📝 Generate exam answers</li>
+                        <li>💻 Explain programming concepts</li>
+                        <li>🧠 Create study notes</li>
+                        <li>❓ Generate practice questions</li>
+                        <li>⚛️ Explain quantum concepts</li>
+                    </ul>
+
+                </div>
+
+
+                <div class="sidebar-card exam-card">
+
+                    <span>EXAM MODE</span>
+
+                    <h3>Prepare for your exams</h3>
+
+                    <p>
+                        Ask for 2-mark, 5-mark or 10-mark answers
+                        based on your syllabus.
+                    </p>
+
+                    <button onclick="useQuestion('Give me a 10-mark answer for this topic')">
+                        Start Exam Preparation →
+                    </button>
+
+                </div>
+
+            </aside>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= CTA ================= -->
+    <section class="cta">
+
+        <div>
+            <span>KEEP LEARNING</span>
+
+            <h2>
+                Turn Every Question Into
+                <strong>Knowledge.</strong>
+            </h2>
+
+            <p>
+                Explore subjects, practice quizzes and track your
+                learning progress.
+            </p>
+
+            <a href="subjects.html" class="primary-button">
+                Explore Subjects →
+            </a>
+        </div>
+
+    </section>
+
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="footer">
+
+        <div class="footer-container">
+
+            <div class="footer-brand">
+
+                <div class="logo">
+                    <div class="logo-icon">AI</div>
+
+                    <div>
+                        <h2>AI Study Assistant</h2>
+                        <span>Smart Learning Platform</span>
+                    </div>
+                </div>
+
+                <p>
+                    An AI-powered learning platform designed to
+                    help students study smarter and learn faster.
+                </p>
+
+            </div>
+
+
+            <div class="footer-column">
+
+                <h3>Quick Links</h3>
+
+                <a href="index.html">Home</a>
+                <a href="subjects.html">Subjects</a>
+                <a href="ai-assistant.html">AI Assistant</a>
+
+            </div>
+
+
+            <div class="footer-column">
+
+                <h3>Learning</h3>
+
+                <a href="quizzes.html">Quizzes</a>
+                <a href="dashboard.html">Dashboard</a>
+                <a href="subjects.html">Study Materials</a>
+
+            </div>
+
+
+            <div class="footer-column">
+
+                <h3>Platform</h3>
+
+                <a href="ai-assistant.html">Ask AI</a>
+                <a href="quizzes.html">Practice</a>
+                <a href="dashboard.html">Progress</a>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            <p>
+                © 2026 AI Study Assistant. All rights reserved.
+            </p>
+
+            <p>
+                Built for smarter learning.
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <script src="script.js"></script>
+
+    <script>
+
+  async function sendQuestion() {
+
+    const input = document.getElementById("userQuestion");
+    const question = input.value.trim();
+const subject =
+    document.getElementById("subjectSelect").value;
+    const answerType =
+    document.getElementById("answerTypeSelect").value;
+    if (question === "") {
+        alert("Please enter your study question.");
+        return;
+    }
+let questionHistory =
+    JSON.parse(localStorage.getItem("questionHistory")) || [];
+
+questionHistory.push({
+    question: question,
+    date: new Date().toLocaleString()
+});
+
+localStorage.setItem(
+    "questionHistory",
+    JSON.stringify(questionHistory)
+);
+
+displayQuestionHistory();
+    const chatMessages =
+        document.querySelector(".chat-messages");
+
+    // ================= USER MESSAGE =================
+
+    const userMessage =
+        document.createElement("div");
+
+    userMessage.className =
+        "message user-message";
+
+    const userContent =
+        document.createElement("div");
+
+    userContent.className =
+        "message-content";
+
+    const userName =
+        document.createElement("span");
+
+    userName.className =
+        "message-name";
+
+    userName.textContent = "You";
+
+    const userText =
+        document.createElement("p");
+
+    userText.textContent = question;
+
+    userContent.appendChild(userName);
+    userContent.appendChild(userText);
+
+    userMessage.appendChild(userContent);
+
+    chatMessages.appendChild(userMessage);
+
+    // Clear input
+    input.value = "";
+
+    // ================= AI MESSAGE =================
+
+   const aiMessage =
+    document.createElement("div");
+
+aiMessage.className =
+    "message ai-message";
+
+aiMessage.innerHTML = `
+    <div class="message-avatar">
+        AI
+    </div>
+
+    <div class="message-content">
+
+        <span class="message-name">
+            AI Assistant
+        </span>
+
+        <p id="aiLoading" class="ai-thinking">
+            ⏳ AI is thinking...
+        </p>
+
+        <button
+            class="copy-answer-btn"
+            onclick="copyAIAnswer(this)"
+        >
+            📋 Copy
+        </button>
+<button
+    class="download-pdf-btn"
+    onclick="downloadAIAnswer(this)"
+>
+    📄 PDF
+</button>
+<button
+    class="save-answer-btn"
+    onclick="saveAIAnswer(this)"
+>
+    ⭐ Save
+</button>
+<button
+    class="read-answer-btn"
+    onclick="readAIAnswer(this)"
+>
+    🔊 Read
+</button>
+    </div>
+`;
+
+    chatMessages.appendChild(aiMessage);
+
+    chatMessages.scrollTop =
+        chatMessages.scrollHeight;
+
+    // ================= API REQUEST =================
+
+    try {
+
+        const response = await fetch(
+            "/api/ai/ask",
+            {
+                method: "POST",
+
+                headers: {
+                    "Content-Type":
+                        "application/json"
+                },
+
+                body: JSON.stringify({
+                    question: question,
+                    subject: subject,
+                    answerType: answerType
+                })
+            }
+        );
+
+        const data =
+            await response.json();
+
+        const loadingText =
+            aiMessage.querySelector("#aiLoading");
+
+        if (data.success) {
+
+
+            loadingText.innerHTML =
+    formatAIResponse(data.answer);
+
+        } else {
+
+            loadingText.textContent =
+                "Sorry, I could not generate an answer.";
+
+        }
+
+    } catch (error) {
+
+        console.error(
+            "AI Assistant Error:",
+            error
+        );
+
+        const loadingText =
+            aiMessage.querySelector("#aiLoading");
+
+        loadingText.textContent =
+            "Unable to connect to AI Assistant. Please try again.";
+
+    }
+
+    chatMessages.scrollTop =
+        chatMessages.scrollHeight;
+}
+
+
+    function useQuestion(question) {
+
+        const input =
+            document.getElementById("userQuestion");
+
+        input.value = question;
+
+        input.focus();
+    }
+
+
+    function handleEnter(event) {
+
+        if (event.key === "Enter") {
+            sendQuestion();
+        }
+
+    }
+
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</body>
+</html>
