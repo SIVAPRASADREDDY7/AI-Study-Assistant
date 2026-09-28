@@ -892,7 +892,7 @@ aiMessage.innerHTML = `
     try {
 
         const response =
-            await fetch("/api/ai/ask", {
+           await fetch("https://ai-study-assistant-1n0x.onrender.com/api/ai/ask", {
 
                 method: "POST",
 
