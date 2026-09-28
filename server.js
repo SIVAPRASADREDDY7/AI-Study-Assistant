@@ -457,7 +457,7 @@ app.post("/api/ai/ask", async (req, res) => {
 for (let attempt = 1; attempt <= 3; attempt++) {
     try {
         response = await ai.models.generateContent({
-            model: "gemini-3.5-flash-lite",
+            model: "gemini-2.5-flash",
             contents: question,
             config: {
                 systemInstruction:
