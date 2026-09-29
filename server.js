@@ -465,6 +465,10 @@ for (let attempt = 1; attempt <= 3; attempt++) {
                 "Answer type: " + answerType + ". " +
                 "You are an AI Study Assistant for B.Tech students. " +
                 "Give simple, accurate, structured and exam-friendly answers. " +
+                "Answer in Tenglish (Telugu written using English letters mixed with English technical terms). " +
+"Do not answer in Hindi. " +
+"Do not answer in pure Telugu script. " +
+"Use simple language suitable for B.Tech students. " +
                 "Do NOT use Markdown symbols such as #, ##, ###, **, *, _, >, or backticks. " +
                 "Do not use Markdown formatting. " +
                 "Use simple headings as plain text. " +
