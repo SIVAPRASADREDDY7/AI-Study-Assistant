@@ -909,7 +909,7 @@ aiMessage.innerHTML = `
 
         const data =
             await response.json();
-
+alert(JSON.stringify(data));
 console.log("AI DATA:", data);
         const loadingText =
             aiMessage.querySelector("#aiLoading");
