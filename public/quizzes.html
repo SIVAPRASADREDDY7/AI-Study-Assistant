@@ -208,9 +208,17 @@
                     <h2 id="quizTitle">Select a quiz to begin</h2>
                 </div>
 
-                <div class="question-counter" id="questionCounter">
-                    0 / 5
-                </div>
+               <div class="quiz-header-info">
+
+    <div class="question-counter" id="questionCounter">
+        0 / 5
+    </div>
+
+    <div class="quiz-timer" id="quizTimer">
+        ⏱ 05:00
+    </div>
+
+</div>
 
             </div>
 
@@ -732,7 +740,50 @@
         let currentQuestion = 0;
         let userAnswers = [];
         let quizCompleted = false;
+let quizTime = 5 * 60;
+let quizTimerInterval = null;
 
+function startQuizTimer() {
+
+    clearInterval(quizTimerInterval);
+
+    quizTime = 5 * 60;
+
+    updateQuizTimer();
+
+    quizTimerInterval = setInterval(() => {
+
+        quizTime--;
+
+        updateQuizTimer();
+
+        if (quizTime <= 0) {
+
+            clearInterval(quizTimerInterval);
+
+            alert("Time is up! Your quiz will be submitted.");
+
+            finishQuiz();
+
+        }
+
+    }, 1000);
+}
+
+
+function updateQuizTimer() {
+
+    const minutes =
+        Math.floor(quizTime / 60);
+
+    const seconds =
+        quizTime % 60;
+
+    document.getElementById("quizTimer")
+        .textContent =
+        `⏱ ${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
+
+}
 
         function startQuiz(subject) {
 
@@ -907,7 +958,7 @@
 
 
       async function finishQuiz() {
-
+clearInterval(quizTimerInterval);
     let score = 0;
 
     selectedQuiz.questions.forEach(
