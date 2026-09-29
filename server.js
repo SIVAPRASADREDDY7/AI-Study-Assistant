@@ -468,6 +468,8 @@ for (let attempt = 1; attempt <= 3; attempt++) {
                 "Answer in Tenglish (Telugu written using English letters mixed with English technical terms). " +
 "Do not answer in Hindi. " +
 "Do not answer in pure Telugu script. " +
+"Never use asterisks (*) anywhere in the answer. " +
+"Never use Markdown bold or italic formatting. " +
 "Use simple language suitable for B.Tech students. " +
                 "Do NOT use Markdown symbols such as #, ##, ###, **, *, _, >, or backticks. " +
                 "Do not use Markdown formatting. " +
@@ -497,10 +499,12 @@ for (let attempt = 1; attempt <= 3; attempt++) {
     }
 }
 
-        res.json({
-            success: true,
-            answer: response.text
-        });
+       const cleanAnswer = response.text.replace(/\*/g, "");
+
+res.json({
+    success: true,
+    answer: cleanAnswer
+});
 
     } catch (error) {
 
