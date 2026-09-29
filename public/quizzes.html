@@ -740,6 +740,7 @@
         let currentQuestion = 0;
         let userAnswers = [];
         let quizCompleted = false;
+        
 let quizTime = 5 * 60;
 let quizTimerInterval = null;
 
@@ -805,7 +806,7 @@ function updateQuizTimer() {
     ).fill(null);
 
     quizCompleted = false;
-
+startQuizTimer();
             document.getElementById("quizArea")
                 .scrollIntoView({
                     behavior: "smooth"
