@@ -382,60 +382,177 @@
         const quizData = {
 
             ai: {
-                title: "Artificial Intelligence Quiz",
-                questions: [
-                    {
-                        question: "What is Artificial Intelligence?",
-                        options: [
-                            "A type of computer hardware",
-                            "Technology that simulates human intelligence",
-                            "A programming language",
-                            "A database system"
-                        ],
-                        answer: 1
-                    },
-                    {
-                        question: "Which of the following is an AI application?",
-                        options: [
-                            "Calculator only",
-                            "Image recognition",
-                            "Keyboard",
-                            "Computer cable"
-                        ],
-                        answer: 1
-                    },
-                    {
-                        question: "What is an intelligent agent?",
-                        options: [
-                            "An entity that perceives and acts",
-                            "A storage device",
-                            "A computer monitor",
-                            "A network cable"
-                        ],
-                        answer: 0
-                    },
-                    {
-                        question: "Which technique allows machines to learn from data?",
-                        options: [
-                            "Machine Learning",
-                            "Formatting",
-                            "Printing",
-                            "File compression"
-                        ],
-                        answer: 0
-                    },
-                    {
-                        question: "What does AI stand for?",
-                        options: [
-                            "Automatic Internet",
-                            "Artificial Intelligence",
-                            "Advanced Input",
-                            "Application Interface"
-                        ],
-                        answer: 1
-                    }
-                ]
-            },
+    title: "Artificial Intelligence Quiz",
+
+    questions: [
+
+        {
+            question: "What is Artificial Intelligence?",
+            options: [
+                "A type of computer hardware",
+                "Technology that simulates human intelligence",
+                "A programming language",
+                "A database system"
+            ],
+            answer: 1
+        },
+
+        {
+            question: "Which of the following is an AI application?",
+            options: [
+                "Calculator only",
+                "Image recognition",
+                "Keyboard",
+                "Computer cable"
+            ],
+            answer: 1
+        },
+
+        {
+            question: "What is an intelligent agent?",
+            options: [
+                "An entity that perceives and acts",
+                "A storage device",
+                "A computer monitor",
+                "A network cable"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "Which technique allows machines to learn from data?",
+            options: [
+                "Machine Learning",
+                "Formatting",
+                "Printing",
+                "File compression"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "What does AI stand for?",
+            options: [
+                "Automatic Internet",
+                "Artificial Intelligence",
+                "Advanced Input",
+                "Application Interface"
+            ],
+            answer: 1
+        },
+
+        {
+            question: "Which field helps computers understand human language?",
+            options: [
+                "Natural Language Processing",
+                "Computer Hardware",
+                "File Management",
+                "Operating System"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "Which technology enables computers to identify objects in images?",
+            options: [
+                "Computer Vision",
+                "Cloud Storage",
+                "Database Management",
+                "Text Editing"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "What is Machine Learning?",
+            options: [
+                "A method where machines learn from data",
+                "A computer repair method",
+                "A type of keyboard",
+                "A file storage system"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "Which of the following is an example of AI?",
+            options: [
+                "Voice assistant",
+                "USB cable",
+                "Keyboard",
+                "Monitor"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "What is the main goal of an AI system?",
+            options: [
+                "To perform tasks that normally require human intelligence",
+                "To increase monitor size",
+                "To store files only",
+                "To print documents"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "Which AI technique uses rewards and penalties to learn?",
+            options: [
+                "Reinforcement Learning",
+                "Database Management",
+                "File Compression",
+                "Web Design"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "Which of the following is related to speech recognition?",
+            options: [
+                "Natural Language Processing",
+                "Computer Networking",
+                "Data Structures",
+                "Operating Systems"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "What is Deep Learning?",
+            options: [
+                "A type of machine learning using neural networks",
+                "A method of storing files",
+                "A programming editor",
+                "A computer network"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "Which AI technology is commonly used in self-driving vehicles?",
+            options: [
+                "Computer Vision",
+                "Word Processing",
+                "File Compression",
+                "Spreadsheet Editing"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "Which of the following is a benefit of Artificial Intelligence?",
+            options: [
+                "Automation of complex tasks",
+                "Increasing manual work",
+                "Removing all computer systems",
+                "Reducing data processing"
+            ],
+            answer: 0
+        }
+
+    ]
+},
 
 
             ds: {
@@ -617,38 +734,46 @@
         let quizCompleted = false;
 
 
-        function startQuiz(subject) {
+      function startQuiz(subject) {
 
-            selectedQuiz = quizData[subject];
+    const originalQuiz = quizData[subject];
 
-            currentQuestion = 0;
+    const shuffledQuestions = [...originalQuiz.questions]
+        .sort(() => Math.random() - 0.5)
+        .slice(0, 5);
 
-            userAnswers = new Array(
-                selectedQuiz.questions.length
-            ).fill(null);
+    selectedQuiz = {
+        title: originalQuiz.title,
+        questions: shuffledQuestions
+    };
 
-            quizCompleted = false;
+    currentQuestion = 0;
 
-            document.getElementById("quizArea")
-                .scrollIntoView({
-                    behavior: "smooth"
-                });
+    userAnswers = new Array(
+        selectedQuiz.questions.length
+    ).fill(null);
 
-            document.getElementById("quizResult")
-                .innerHTML = "";
+    quizCompleted = false;
 
-            document.getElementById("quizTitle")
-                .textContent = selectedQuiz.title;
+    document.getElementById("quizArea")
+        .scrollIntoView({
+            behavior: "smooth"
+        });
 
-            document.getElementById("quizSubject")
-                .textContent = "PRACTICE QUIZ";
+    document.getElementById("quizResult")
+        .innerHTML = "";
 
-            document.getElementById("nextButton")
-                .disabled = false;
+    document.getElementById("quizTitle")
+        .textContent = selectedQuiz.title;
 
-            renderQuestion();
+    document.getElementById("quizSubject")
+        .textContent = "PRACTICE QUIZ";
 
-        }
+    document.getElementById("nextButton")
+        .disabled = false;
+
+    renderQuestion();
+}
 
 
         function renderQuestion() {
